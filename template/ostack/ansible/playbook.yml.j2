@@ -1,0 +1,35 @@
+---
+- name: Warming up {{ ecp.name }} instance
+  gather_facts: no
+  hosts: instance_public_ip
+
+  tasks:
+  - name: Initial connection block
+    block:
+      - name: Wait 2 minutes, but only start checking after 30 seconds
+        wait_for_connection:
+          delay: 30
+          timeout: 120
+    rescue:
+      - name: Try to install python 2, when ansible is not able to connect
+        raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+- name: Set up {{ ansible_var.name }}
+  hosts: instance_public_ip
+  become: yes
+  vars:
+    - {{ ansible_var.name }}: "{{ "{{" }}lookup('env','TF_VAR_{{ ansible_var.name }}'){{ "}}" }}"
+  roles:
+    - role: '{{ ansible.galaxy_role }}'
+
+- name: Change authorized public keys
+  gather_facts: no
+  hosts: instance_public_ip
+
+  tasks:
+  - name: Make sure the user key is authorized on the {{ ecp.name }} instance
+    authorized_key:{% raw %}
+      user: "{{lookup('env','ANSIBLE_REMOTE_USER')}}"
+      key: "{{lookup('env','ssh_key')}}"
+      exclusive: no
+      state: present{% endraw %}

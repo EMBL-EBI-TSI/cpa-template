@@ -1,0 +1,60 @@
+# EMBL-EBI Cloud Portal - {{ ecp.title }}
+
+{{ ecp.description }}
+
+___
+
+## Requirements
+A network is expected to be shared with other virtual machines, therefore is not provided and destroyed with this terraform description.
+You need to set up the name of the network inside of the terraform.tfvars file.
+If you want to provide a new network you can use the cpa-network terraform description.
+
+## Instructions
+Create a new entry in the `Deployment Parameters` section.
+
+The only required input is the {{ input.name }}, which is the {{ input.description }}.
+
+#This application can be used in combination with one of the following :
+
+#[https://github.com/EMBL-EBI-TSI/](https://github.com/EMBL-EBI-TSI/)
+
+## Default values
+
+### `Deployment parameters`
+| Parameter name          | Parameter value         |
+| ---                     | ---                     |
+| `name`                  | `{{ ecp.name }}`        |
+| `{{parameter.name}}`    | `{{ parameter.value }}` |
+| `{{parameter2.name}}`   | `{{ parameter2.value }}`|
+|                         |                         |
+| `disk_image_name`       | `centos-7.4`            |
+| `remote_user`           | `centos`                |
+| `machine_type`          | `s1.tiny`               |
+| `floating_ip_pool`      | `ext-net`               |
+| `network_name`          | ``                      |
+| `ssh_key`               | ``                      |
+| `public_key_path`       | `~/.ssh/id_rsa.pub`     |
+| `private_key_path`      | `~/.ssh/id_rsa`         |
+| `user_private_key_path` | `~/.ssh/id_rsa`         |
+
+### `Inputs`
+| Input name              | Input value             |
+| ---                     | ---                     |
+| `{{ input.name }}`      | `{{ input.value }}`     |
+| `{{ input2.name }}`     | `{{ input2.value }}`    |
+
+
+### Open Ports
+The virtual machine provided will have this ports open.
+
+-   `ICMP`: `all`
+-   `TCP` : `22`
+-   `{{firewall.service_name}}`:``{{firewall.port}}``
+
+### Ansible roles
+Ansible Galaxy:
+[https://galaxy.ansible.com/{{ ansible.galaxy_role|replace(".","/")}}](https://galaxy.ansible.com/{{ansible.galaxy_role|replace(".", "/") }})
+
+## :shipit:
+<sub>This is  an application for the [EMBL-EBI Cloud Portal](https://portal.tsi.ebi.ac.uk) , generate using:
+[https://github.com/EMBL-EBI-TSI/cpa-template](https://github.com/EMBL-EBI-TSI/cpa-template)</sub>

@@ -1,0 +1,29 @@
+{
+    "applicationName": "{{ ecp.name }}",
+    "contactEmail": "{{ecp.email}}",
+    "about": "{{ ecp.title }} instance",
+    "version": "{{ecp.version}}",
+    "cloudProviders": [
+        {
+            "cloudProvider": "{{cloud_provider.name}}",
+            "path": "{{cloud_provider.path}}"
+        }
+    ],
+    "inputs": [
+        "{{ input.name }}",
+        "{{ input2.name }}"
+    ],
+    "deploymentParameters": [
+        "{{parameter.name}}",
+        "{{parameter2.name}}",
+        "disk_image_name",
+        "remote_user",
+        "machine_type",
+        "floating_ip_pool",
+        "network_name"
+    ],
+    "outputs": [
+        "{{output.name}}",
+        "external_ip"
+    ]
+}
