@@ -1,0 +1,60 @@
+---
+
+# ecp section
+
+ecp:
+  name: redis
+  title: Redis Server
+  email: gianni@ebi.ac.uk
+  version: 0.1
+  description: "This application uses Terraform for deploying the official iso
+  CentOS 7.4 image and configures a Redis server using a Galaxy Ansible role.
+  Other iso image is also supported specifying a different `disk_image_name`.
+  When using a Ubuntu or other OS, you need also to configure the `remote_user`
+  parameter according to it (`ubuntu` in this case)."
+
+# cloud_provider valid names:
+# AWS AZURE GCP OSTACK
+
+cloud_provider:
+  name: OSTACK
+  path: ostack
+
+input:
+  description: Number of instances to deploy
+  name: instance_number
+  value: 1
+
+input2:
+  description: IP address where to associate the redis service.
+  name: redis_bind
+  value:
+
+output:
+  description: External IP of the redis server
+  name: external_ip
+
+parameter:
+  description: The version of Redis
+  name: redis_version
+  value: 3.0.7
+
+parameter2:
+  description: Example of a second parameter description
+  name: parameter_2_name
+  value: parameter_2_value
+
+# ansible section
+
+ansible:
+  galaxy_role: davidwittman.redis
+
+ansible_var:
+  name: redis_bind
+  default_value: 127.0.0.1
+
+# terraform section
+
+firewall:
+  service_name: redis
+  port: 6379
