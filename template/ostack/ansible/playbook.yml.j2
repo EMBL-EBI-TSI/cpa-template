@@ -18,7 +18,8 @@
   hosts: instance_public_ip
   become: yes
   vars:
-    - {{ ansible_var.name }}: "{{ "{{" }}lookup('env','TF_VAR_{{ ansible_var.name }}'){{ "}}" }}"
+    - {{ ansible_var.name }}: "{{ ansible_var.value }}"
+    - {{ parameter.name }}: "{{ "{{" }}lookup('env','TF_VAR_{{ parameter.name }}'){{ "}}" }}"
   roles:
     - role: '{{ ansible.galaxy_role }}'
 

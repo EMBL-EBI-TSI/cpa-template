@@ -21,27 +21,27 @@ The only required input is the {{ input.name }}, which is the {{ input.descripti
 ## Default values
 
 ### `Deployment parameters`
-| Parameter name          | Parameter value         |
-| ---                     | ---                     |
-| `name`                  | `{{ ecp.name }}`        |
-| `{{parameter.name}}`    | `{{ parameter.value }}` |
-| `{{parameter2.name}}`   | `{{ parameter2.value }}`|
-|                         |                         |
-| `disk_image_name`       | `centos-7.4`            |
-| `remote_user`           | `centos`                |
-| `machine_type`          | `s1.tiny`               |
-| `floating_ip_pool`      | `ext-net`               |
-| `network_name`          | ``                      |
-| `ssh_key`               | ``                      |
-| `public_key_path`       | `~/.ssh/id_rsa.pub`     |
-| `private_key_path`      | `~/.ssh/id_rsa`         |
-| `user_private_key_path` | `~/.ssh/id_rsa`         |
+| Parameter name          | Parameter value                 |
+| ---                     | ---                             |
+| `name`                  | `{{ ecp.name }}`                |
+| `{{parameter.name}}`    | `{{ parameter.default_value }}` |
+| `{{parameter2.name}}`   | `{{ parameter2.default_value }}`|
+|                         |                                 |
+| `disk_image_name`       | `centos-7.4`                    |
+| `remote_user`           | `centos`                        |
+| `machine_type`          | `s1.tiny`                       |
+| `floating_ip_pool`      | `ext-net`                       |
+| `network_name`          | ``                              |
+| `ssh_key`               | ``                              |
+| `public_key_path`       | `~/.ssh/id_rsa.pub`             |
+| `private_key_path`      | `~/.ssh/id_rsa`                 |
+| `user_private_key_path` | `~/.ssh/id_rsa`                 |
 
 ### `Inputs`
-| Input name              | Input value             |
-| ---                     | ---                     |
-| `{{ input.name }}`      | `{{ input.value }}`     |
-| `{{ input2.name }}`     | `{{ input2.value }}`    |
+| Input name              | Input value                     |
+| ---                     | ---                             |
+| `{{ input.name }}`      | `{{ input.value }}`             |
+| `{{ input2.name }}`     | `{{ input2.value }}`            |
 
 
 ### Open Ports

@@ -37,12 +37,12 @@ output:
 parameter:
   description: The version of Redis
   name: redis_version
-  value: 3.0.7
+  default_value: 3.0.7
 
 parameter2:
   description: Example of a second parameter description
   name: parameter_2_name
-  value: parameter_2_value
+  default_value: parameter_2_default_value
 
 # ansible section
 
@@ -51,7 +51,7 @@ ansible:
 
 ansible_var:
   name: redis_bind
-  default_value: 127.0.0.1
+  value: 127.0.0.1
 
 # terraform section
 
