@@ -68,6 +68,8 @@ ansible-galaxy install -r requirements.yml
 # Set default value for Ansible variables if they are either empty or undefined
 export TF_VAR_{{ parameter.name }}="${TF_VAR_{{ parameter.name }}:-{{ parameter.default_value  }}}"
 echo "export TF_VAR_{{ parameter.name }}=${TF_VAR_{{ parameter.name }}}"
+export TF_VAR_{{ input2.name }}="${TF_VAR_{{ input2.name }}:-{{ input2.value  }}}"
+echo "export TF_VAR_{{ input2.name }}=${TF_VAR_{{ input2.name }}}"
 export ANSIBLE_REMOTE_USER="${TF_VAR_remote_user:-centos}"
 echo "export ANSIBLE_REMOTE_USER=${ANSIBLE_REMOTE_USER}"
 

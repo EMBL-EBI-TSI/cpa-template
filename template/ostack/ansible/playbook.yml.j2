@@ -20,6 +20,7 @@
   vars:
     - {{ ansible_var.name }}: "{{ ansible_var.value }}"
     - {{ parameter.name }}: "{{ "{{" }}lookup('env','TF_VAR_{{ parameter.name }}'){{ "}}" }}"
+    - {{ input2.name }}: "{{ "{{" }}lookup('env','TF_VAR_{{ input2.name }}'){{ "}}" }}"
   roles:
     - role: '{{ ansible.galaxy_role }}'
 
